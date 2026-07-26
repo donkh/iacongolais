@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institut pour l'Avenir Congolais (IAC)</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="iac.jpg">
+    <link rel="apple-touch-icon" href="iac.jpg">
+
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0B2B48;
+            --primary-light: #163B5F;
+            --accent: #C59B27;
+            --accent-hover: #a37f1e;
+            --bg-light: #F8FAFC;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px -5px rgba(11, 43, 72, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden; /* Empêche le défilement horizontal indésirable */
+        }
+
+        /* --- En-tête / Navigation --- */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .logo-brand img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .btn-join {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-join:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        /* Menu Burger Mobile (Masqué sur PC) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(11, 43, 72, 0.95) 0%, rgba(15, 23, 42, 0.92) 100%), url('iac2.jpg') center/cover no-repeat;
+            color: var(--white);
+            padding: 80px 20px 100px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(197, 155, 39, 0.2);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem); /* Taille adaptative automatique */
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: #CBD5E1;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-accent, .btn-outline {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            width: auto;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        /* --- Sections communes --- */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-subtitle {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* --- À propos --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .about-image-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--accent);
+            text-align: center;
+        }
+
+        .about-image-card img {
+            max-width: 70%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        /* --- Grilles Adaptatives (Vision, Mission, Valeurs) --- */
+        .grid-responsive {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card-style {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .vision-card {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary);
+        }
+
+        .vision-card i {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .mission-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .mission-number {
+            background: rgba(197, 155, 39, 0.15);
+            color: var(--accent);
+            font-weight: 800;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .valeur-card {
+            position: relative;
+            border-top: 4px solid var(--accent);
+        }
+
+        .valeur-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .valeur-card h3 i {
+            color: var(--accent);
+        }
+
+        /* --- CTA Banner --- */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 16px;
+            margin: 40px auto;
+            max-width: 1100px;
+        }
+
+        .cta-banner h2 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #07192A;
+            color: #94A3B8;
+            padding: 50px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #1E293B;
+        }
+
+        .footer-brand img {
+            height: 45px;
+            margin-bottom: 12px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a { color: #94A3B8; text-decoration: none; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================
+           RÈGLES RESPONSIVE (MOBILE & TABLETTE)
+        ========================================== */
+        @media (max-width: 850px) {
+            .menu-toggle {
+                display: block; /* Affiche le bouton menu sur mobile */
+            }
+
+            nav {
+                display: none; /* Masque le menu par défaut */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                gap: 15px;
+            }
+
+            /* Classe active pour ouvrir le menu mobile */
+            nav.active {
+                display: flex;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr; /* Bascule sur une seule colonne */
+            }
+
+            .hero-btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-accent, .btn-outline {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-brand">
+                <img src="iac.jpg" alt="Logo IAC">
+            </a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <nav id="nav-links">
+                <a href="#about">À propos</a>
+                <a href="#vision">Vision</a>
+                <a href="#mission">Mission</a>
+                <a href="#valeurs">Valeurs</a>
+                <a href="inscription.html" class="btn-join">Rejoindre l'IAC</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Penser • Analyser • Bâtir</span>
+            <h1>Institut pour l’Avenir Congolais</h1>
+            <p>Un centre de réflexion et d'analyse stratégique dédié à la construction d’un Congo économiquement fort, socialement stable et tourné vers l’avenir.</p>
+            <div class="hero-btn-group">
+                <a href="inscription.html" class="btn-accent"><i class="fa-solid fa-user-plus"></i> Devenir Membre</a>
+                <a href="#about" class="btn-outline">Découvrir l'Institut</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <main class="container" id="about">
+        <div class="section-header">
+            <span class="section-subtitle">Qui sommes-nous ?</span>
+            <h2 class="section-title">À propos de l'Institut</h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>L’<strong>Institut pour l’Avenir Congolais (IAC)</strong> est un centre de réflexion, d’analyse stratégique et de propositions dédié à la construction d’un Congo économiquement fort, socialement stable et tourné vers l’avenir.</p>
+                <p>L’Institut est né de la conviction que le développement durable de la RDC exige des idées structurées, des méthodes rigoureuses et une vision de long terme, adaptées aux réalités congolaises.</p>
+                <p>L’IAC se positionne comme un espace neutre, inclusif et non partisan, ouvert à toutes les sensibilités constructives.</p>
+            </div>
+            <div class="about-image-card">
+                <img src="iac2.jpg" alt="Logo secondaire IAC">
+                <h3 style="color: var(--primary);">L'Excellence & La Rigueur</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Au service du progrès socio-économique de la RDC.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section Vision -->
+    <section style="background-color: var(--white); padding: 60px 20px;" id="vision">
+        <div class="container" style="padding: 0;">
+            <div class="section-header">
+                <span class="section-subtitle">Horizon Stratégique</span>
+                <h2 class="section-title">Notre Vision</h2>
+            </div>
+
+            <div class="grid-responsive">
+                <div class="card-style vision-card">
+                    <i class="fa-solid fa-user-check"></i>
+                    <h3>Citoyen Économiquement Autonome</h3>
+                    <p>Un Congo où chaque citoyen est informé, formé et capable de créer de la valeur en toute autonomie.</p>
+                </div>
+                <div class="card-style vision-card">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <h3>Un État Stratège</h3>
+                    <p>Un État fondé sur la performance, la responsabilité, la transparence et l’anticipation des défis collectifs.</p>
+                </div>
+                <div class="card-style vision-card">
+                    <i class="fa-solid fa-globe-africa"></i>
+                    <h3>Une Nation Respectée</h3>
+                    <p>Une nation reconnue pour sa stabilité, sa créativité et sa contribution au développement africain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mission -->
+    <main class="container" id="mission">
+        <div class="section-header">
+            <span class="section-subtitle">Feuille de route</span>
+            <h2 class="section-title">Notre Mission</h2>
+        </div>
+
+        <div class="grid-responsive">
+            <div class="card-style mission-item">
+                <div class="mission-number">1</div>
+                <p>Produire des analyses claires et accessibles sur les enjeux économiques et institutionnels du pays.</p>
+            </div>
+            <div class="card-style mission-item">
+                <div class="mission-number">2</div>
+                <p>Concevoir et promouvoir des modèles congolais de création de richesse, inclusifs et mesurables.</p>
+            </div>
+            <div class="card-style mission-item">
+                <div class="mission-number">3</div>
+                <p>Renforcer la culture de planification, de discipline économique et de responsabilité citoyenne.</p>
+            </div>
+            <div class="card-style mission-item">
+                <div class="mission-number">4</div>
+                <p>Servir de plateforme de dialogue entre citoyens, experts, entrepreneurs et décideurs.</p>
+            </div>
+            <div class="card-style mission-item">
+                <div class="mission-number">5</div>
+                <p>Accompagner l’émergence d’une nouvelle génération de leaders orientés solutions et résultats.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section Valeurs -->
+    <section style="background-color: #F1F5F9; padding: 60px 20px;" id="valeurs">
+        <div class="container" style="padding: 0;">
+            <div class="section-header">
+                <span class="section-subtitle">Nos Principes Directeurs</span>
+                <h2 class="section-title">Nos Valeurs</h2>
+            </div>
+
+            <div class="grid-responsive">
+                <div class="card-style valeur-card">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Responsabilité</h3>
+                    <p>Chaque idée doit produire un impact mesurable et assumer ses conséquences.</p>
+                </div>
+                <div class="card-style valeur-card">
+                    <h3><i class="fa-solid fa-chart-line"></i> Rigueur</h3>
+                    <p>Les propositions reposent sur des données, des analyses et des méthodes éprouvées.</p>
+                </div>
+                <div class="card-style valeur-card">
+                    <h3><i class="fa-solid fa-people-group"></i> Inclusion</h3>
+                    <p>Le développement n’a de sens que s’il concerne tous les Congolais, sans exclusion.</p>
+                </div>
+                <div class="card-style valeur-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> Innovation</h3>
+                    <p>Innover oui, mais en tenant compte des réalités sociales, culturelles et économiques du pays.</p>
+                </div>
+                <div class="card-style valeur-card">
+                    <h3><i class="fa-solid fa-landmark"></i> Respect</h3>
+                    <p>Le progrès durable s’inscrit dans le dialogue, la légalité et la stabilité nationale.</p>
+                </div>
+                <div class="card-style valeur-card">
+                    <h3><i class="fa-solid fa-arrow-up-from-ground-water"></i> Autonomisation</h3>
+                    <p>Le citoyen est au centre : informé, formé et acteur de sa propre prospérité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Call to Action -->
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+        <div class="cta-banner">
+            <h2>Soyez un acteur du changement</h2>
+            <p style="margin-bottom: 25px;">Rejoignez un réseau de citoyens, experts et leaders engagés pour construire l'avenir de notre nation.</p>
+            <a href="inscription.html" class="btn-accent">Enregistrer votre adhésion</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="iac.jpg" alt="Logo IAC Footer">
+                <p>Centre de réflexion et d'analyse stratégique pour la RDC.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#valeurs">Valeurs</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Adhésion</h4>
+                <ul>
+                    <li><a href="inscription.html">Rejoindre l'IAC</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Institut pour l’Avenir Congolais (IAC). Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript pour le Menu Mobile -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
