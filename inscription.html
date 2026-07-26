@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhésion Membre - Institut pour l'Avenir Congolais</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="iac.jpg">
+    <link rel="apple-touch-icon" href="iac.jpg">
+
+    <!-- Font Awesome & Google Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0B2B48;
+            --primary-light: #163B5F;
+            --accent: #C59B27;
+            --accent-hover: #a37f1e;
+            --bg-light: #F8FAFC;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0B2B48 0%, #07192A 100%);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .form-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            max-width: 780px;
+            width: 100%;
+            padding: 45px;
+            position: relative;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .header-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        .form-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 35px;
+        }
+
+        /* --- Sections / Rubriques --- */
+        .form-section {
+            background-color: #F8FAFC;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+
+        .section-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(197, 155, 39, 0.3);
+        }
+
+        .section-header-title i {
+            color: var(--accent);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--primary);
+        }
+
+        .input-icon-wrapper {
+            position: relative;
+        }
+
+        .input-icon-wrapper i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px 12px 40px;
+            border: 1px solid #CBD5E1;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            transition: all 0.3s;
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+
+        textarea {
+            padding-left: 14px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 3px;
+        }
+
+        .checkbox-group label {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(197, 155, 39, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .back-home:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 650px) {
+    body {
+        padding: 15px 10px; /* Moins d'espace autour sur mobile */
+    }
+
+    .form-card {
+        padding: 25px 18px; /* Formulaire plus compact */
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Tout passe sur une seule colonne */
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+
+    .form-title {
+        font-size: 1.4rem;
+    }
+}
+        }
+    </style>
+</head>
+<body>
+
+    <div style="width: 100%; max-width: 780px;">
+        <div class="form-card">
+            <div class="header-logo">
+                <a href="index.html">
+                    <img src="iac.jpg" alt="Logo IAC">
+                </a>
+            </div>
+
+            <h1 class="form-title">Formulaire d'Adhésion</h1>
+            <p class="form-subtitle">Devenez membre actif de l'Institut pour l'Avenir Congolais (IAC)</p>
+
+             <form action="https://formspree.io/f/mykrlggl" method="POST" enctype="multipart/form-data">
+                
+                <!-- RUBRIQUE 1: Identité & Contact -->
+                <div class="form-section">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>1. Identité & Coordonnées</span>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="nom" name="nom" placeholder="Ex: Mukendi" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-user"></i>
+                                <input type="text" id="prenom" name="prenom" placeholder="Ex: Jean" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genre">Sexe</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-venus-mars"></i>
+                                <select id="genre" name="genre" required>
+                                    <option value="" disabled selected>Sélectionnez...</option>
+                                    <option value="M">Masculin</option>
+                                    <option value="F">Féminin</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date_naissance">Date de naissance</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <input type="date" id="date_naissance" name="date_naissance" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="email">Adresse E-mail</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" id="email" name="email" placeholder="votre.email@exemple.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telephone">Téléphone (WhatsApp)</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="tel" id="telephone" name="telephone" placeholder="+243..." required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ville">Ville / Province de résidence</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <input type="text" id="ville" name="ville" placeholder="Ex: Kinshasa, Lubumbashi..." required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RUBRIQUE 2: Profil Professionnel & Académique -->
+                <div class="form-section">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>2. Profil Académique & Professionnel</span>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="niveau_etude">Niveau d'études</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-award"></i>
+                                <select id="niveau_etude" name="niveau_etude" required>
+                                    <option value="" disabled selected>Sélectionnez...</option>
+                                    <option value="Diplôme d'État">Diplôme d'État</option>
+                                    <option value="Graduat / Licence (LMD)">Graduat / Licence (LMD)</option>
+                                    <option value="Master / Maîtrise">Master / Maîtrise</option>
+                                    <option value="Doctorat (PhD)">Doctorat (PhD)</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profession">Profession / Occupation actuelle</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <input type="text" id="profession" name="profession" placeholder="Ex: Économiste, Entrepreneur..." required>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="domaine_expertise">Domaine d'expertise principal</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-microscope"></i>
+                                <input type="text" id="domaine_expertise" name="domaine_expertise" placeholder="Ex: Éducation financière, Droit des affaires, Agriculture..." required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RUBRIQUE 3: Engagement au sein de l'IAC -->
+                <div class="form-section">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                        <span>3. Engagement & Contributions</span>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="commission">Thématique d'intérêt prioritaire à l'IAC</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <select id="commission" name="commission" required>
+                                    <option value="" disabled selected>Choisissez votre axe prioritaire...</option>
+                                    <option value="Création de Richesse & Autonomisation">Création de Richesse & Autonomisation Économique</option>
+                                    <option value="Éducation Financière & Entrepreneuriat">Éducation Financière & Entrepreneuriat</option>
+                                    <option value="Gouvernance & Réformes Institutionnelles">Gouvernance & Réformes Institutionnelles</option>
+                                    <option value="Analyse Stratégique & Prospective">Analyse Stratégique & Prospective</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="motivation">Pourquoi souhaitez-vous rejoindre l'IAC ? (Motivation)</label>
+                            <textarea id="motivation" name="motivation" placeholder="Décrivez en quelques lignes ce que vous souhaitez apporter ou apprendre..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RUBRIQUE 4: Sécurité du compte & Engagement -->
+                <div class="form-section">
+                    <div class="section-header-title">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>4. Accès & Validation</span>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-key"></i>
+                                <input type="password" id="password" name="password" placeholder="••••••••" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm_password">Confirmer le mot de passe</label>
+                            <div class="input-icon-wrapper">
+                                <i class="fa-solid fa-key"></i>
+                                <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Je certifie l'exactitude des informations fournies et m'engage à respecter la charte, la vision et les valeurs fondamentales de l'<strong>Institut pour l'Avenir Congolais (IAC)</strong>.</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Soumettre mon adhésion</button>
+            </form>
+        </div>
+
+        <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Retour à la page d'accueil</a>
+    </div>
+
+<script>
+    document.querySelector('form').addEventListener('submit', async function(e) {
+        e.preventDefault(); // Empêche le rechargement classique de la page
+
+        // Vérification des mots de passe
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+
+        if (password !== confirmPassword) {
+            alert('Les mots de passe ne correspondent pas.');
+            return;
+        }
+
+        // Récupération des données du formulaire
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/inscription', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert(result.message);
+                this.reset(); // Réinitialise le formulaire
+                window.location.href = 'index.html'; // Redirige vers l'accueil
+            } else {
+                alert('Erreur : ' + result.message);
+            }
+        } catch (error) {
+            console.error('Erreur:', error);
+            alert('Une erreur réseau est survenue.');
+        }
+    });
+</script>
+</body>
+</html>
